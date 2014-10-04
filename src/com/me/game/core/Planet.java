@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import com.me.game.graphics.GUIRenderer;
+import com.me.game.graphics.Renderer;
 import com.me.game.graphics.Sprite;
 import com.me.game.graphics.Texture;
 import com.me.game.interfaces.CellestialObject;
@@ -24,6 +26,11 @@ public class Planet implements CellestialObject, Renderable {
 	private boolean habitable;
 	private ArrayList<Buildings> listOfBuildings;
 	private ArrayList<Buildings> buildQueue;
+	
+	
+	//renderers
+	private GUIRenderer guiRenderer;
+	private Renderer renderer;
 	
 	public Planet(String pName, int population) {
 		

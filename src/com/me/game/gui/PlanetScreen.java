@@ -15,6 +15,7 @@ public class PlanetScreen implements GUIElement {
 	private ScrollList constructionList, buildingsList, fleetList;
 	private ArrayList<ScrollListElement> cListElement, bListElement, fListElement;
 	private Sprite planetScreenSprite;
+	private Sprite planetImage;
 	private int x, y;
 	
 	private Texture psTex;

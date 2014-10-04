@@ -11,14 +11,11 @@ public class Texture {
 	
 	private BufferedImage img = null;
 	private String filePath = null;
+	private int x, y;
 	
 	public Texture(String filePath) {
 		this.filePath = filePath;
 		loadTexture(this.filePath);
-	}
-	
-	public Texture() {
-
 	}
 	
 	public void loadTexture(String filePath) {
@@ -35,6 +32,14 @@ public class Texture {
 		} catch (IOException e) {
 			System.out.print("Texture loading failed!");
 		}
+	}
+	
+	public int getWidth() {
+		return this.getImage().getWidth(null);
+	}
+	
+	public int getHeight() {
+		return this.getImage().getHeight(null);
 	}
 	
 	public Image getImage() {

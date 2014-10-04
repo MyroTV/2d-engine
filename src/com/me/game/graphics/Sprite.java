@@ -2,32 +2,35 @@ package com.me.game.graphics;
 
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
-import com.me.game.controls.Mouse;
 import com.me.game.interfaces.Renderable;
 
 public class Sprite extends Component implements Renderable {
 	
-	private int x,y;
+	private int x, y, height, width;
 	private Texture texture = null;
 	
-	public Sprite(int x, int y) {
+	public Sprite(int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;
-		this.setBounds(x, y, 0, 0);
+		this.width = width;
+		this.height = height;
+		this.setBounds(x, y, width, height);
 	}
 	
 	public Sprite(Texture texture) {
 		this.texture = texture;
-		this.setBounds(0, 0, 490, 300);
+		this.setBounds(0, 0, texture.getWidth(), texture.getHeight());
 	}
 	
 	public int getWidth() {
-		return 0;
+		return this.width;
 	}
 
 	public int getHeight() {
-		return 0;
+		return this.height;
+
 	}
 	
 	public void render(Graphics g) {
@@ -43,6 +46,10 @@ public class Sprite extends Component implements Renderable {
 			return texture;
 		}
 		else return null;
+	}
+	
+	public void setTexture(Texture texture) {
+		this.texture = texture;
 	}
 
 }
