@@ -27,15 +27,7 @@ public class Display extends Canvas implements Runnable {
 	private static Mouse m = new Mouse(scale);
 
 	public Display(GameWindow gw) {
-		m.setParentDisplay(this);
 		this.gw = gw;
-		createBufferStrategy();
-		bs = gw.getBufferStrategy();
-		g = bs.getDrawGraphics();
-		
-		tex = new Texture("res/spiral.png");
-		ps = new PlanetScreen();
-		ps.init();
 	}
 	
 	public void setScale(double scale) {
@@ -56,6 +48,21 @@ public class Display extends Canvas implements Runnable {
 		bs.show();
 	}
 	
+	public void init() {
+		m.setParentDisplay(this);
+		createBufferStrategy();
+		bs = gw.getBufferStrategy();
+		g = bs.getDrawGraphics();
+		
+		renderer = new Renderer(this.g);
+		guiRenderer = new GUIRenderer(this.g);
+		
+		//test
+		tex = new Texture("res/spiral.png");
+		ps = new PlanetScreen();
+		ps.init();
+	}
+	
 	public Graphics getGraphics() {
 		if (g == null) {
 		}
@@ -72,6 +79,11 @@ public class Display extends Canvas implements Runnable {
 		g.fillRect(0, 0, 800, 600); //background
 		ps.render(g);
 		g.drawImage(tex.getImage(), 300, 300, null);
+		
+		
+		renderer.render();
+		guiRenderer.render();
+		
 		g.dispose();
 		bs.show();
 	}

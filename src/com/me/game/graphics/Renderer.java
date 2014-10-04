@@ -47,11 +47,11 @@ public class Renderer extends Canvas implements Runnable {
 
 	}
 	
-	public void addRenderable() {
-		
+	public void addRenderable(Renderable renderable) {
+		this.renderables.add(renderable);
 	}
 	
-	public void removeRenderable() {
-		
+	public void removeRenderable(Renderable renderable) {
+		this.renderables.remove(renderable);
 	}
 }

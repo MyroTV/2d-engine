@@ -3,7 +3,7 @@ package com.me.game.gui;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-import com.me.game.controls.Mouse;
+import com.me.game.core.Planet;
 import com.me.game.graphics.Sprite;
 import com.me.game.graphics.Texture;
 import com.me.game.interfaces.GUIElement;
@@ -17,8 +17,19 @@ public class PlanetScreen implements GUIElement {
 	private Sprite planetScreenSprite;
 	private Sprite planetImage;
 	private int x, y;
+	private boolean isActive = false;
+	private int drawHierarchy = 2;
+	private Planet planet;
 	
 	private Texture psTex;
+	
+	public PlanetScreen(Planet planet) {
+		this.planet = planet;
+	}
+	
+	public PlanetScreen() {
+		
+	}
 	
 	public int getWidth() {
 		return 0;
@@ -31,7 +42,6 @@ public class PlanetScreen implements GUIElement {
 	public void init() {
 		psTex = new Texture("res/planetScreenTemp.png");
 		planetScreenSprite = new Sprite(psTex);
-		planetScreenSprite.addMouseListener(new Mouse(1.0));
 	}
 
 	public void render(Graphics g) {
@@ -44,6 +54,10 @@ public class PlanetScreen implements GUIElement {
 	
 	public Sprite getSprite() {
 		return this.planetScreenSprite;
+	}
+	
+	public int getDrawHierarchy() {
+		return this.drawHierarchy;
 	}
 
 }

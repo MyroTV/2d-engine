@@ -11,6 +11,7 @@ public abstract class GameLoop implements Runnable {
 	
 	protected final void createDisplay(String title, int width, int height) {
 		d = new Display(new GameWindow(title, width, height));
+		d.init();
 		d.show();
 	}
 
