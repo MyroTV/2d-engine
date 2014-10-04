@@ -21,9 +21,10 @@ public class Mouse extends MouseAdapter {
 	public static final byte CODE = 0x2;
 
 	private static double scale = 1.0;
-
+	private Display hostDisplay;
+	
 	public Mouse() {
-		
+
 	}
 
 	public Mouse(double scale) {
@@ -31,8 +32,9 @@ public class Mouse extends MouseAdapter {
 	}
 
 	public void mousePressed(MouseEvent e) {
-		button = e.getButton();
-		System.out.println("Mouse Pressed Event Triggered by " + e.getComponent().toString() + " component...");
+		button = e.getButton(); //1 = left, 2 = middle, 3 = right
+		System.out.println(e.getButton() + " pressed event triggered by " + e.getComponent().toString() + " component...");
+		hostDisplay.RegisterMouseEvent(button);
 	}
 
 	public void mouseReleased(MouseEvent e) {
@@ -61,6 +63,10 @@ public class Mouse extends MouseAdapter {
 
 	public static int getY() {
 		return y;
+	}
+	
+	public void setParentDisplay(Display parentDisplay) {
+		this.hostDisplay = parentDisplay;
 	}
 	
 	public static void calculateMouseCoordsOnDisplay(Display d) {

@@ -27,6 +27,7 @@ public class Display extends Canvas implements Runnable {
 	private static Mouse m = new Mouse(scale);
 
 	public Display(GameWindow gw) {
+		m.setParentDisplay(this);
 		this.gw = gw;
 		createBufferStrategy();
 		bs = gw.getBufferStrategy();
@@ -46,7 +47,7 @@ public class Display extends Canvas implements Runnable {
 	}
 	
 	public void enable(byte device) {
-		//gw.addMouseListener(m);
+		gw.addMouseListener(m);
 		System.out.println("Mouse enabled...");
 	}
 	
@@ -81,5 +82,11 @@ public class Display extends Canvas implements Runnable {
 	
 	public static Mouse getMouse() {
 		return m;
+	}
+	
+	public void RegisterMouseEvent(int buttonPressed) {
+		if(ps.getSprite().getBounds().contains(Mouse.getX(), Mouse.getY())) {
+
+		}
 	}
 }

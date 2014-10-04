@@ -14,10 +14,12 @@ public class Sprite extends Component implements Renderable {
 	public Sprite(int x, int y) {
 		this.x = x;
 		this.y = y;
+		this.setBounds(x, y, 0, 0);
 	}
 	
 	public Sprite(Texture texture) {
 		this.texture = texture;
+		this.setBounds(0, 0, 490, 300);
 	}
 	
 	public int getWidth() {
